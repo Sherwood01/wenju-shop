@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/goods/goods",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "文具优选小店",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8fa"
+  },
+  "tabBar": {
+    "color": "#71747a",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "小店首页"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "精选文具"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的订单"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

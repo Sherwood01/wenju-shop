@@ -1,0 +1,28 @@
+services:
+  # 1. 后端 API 服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: wenju-backend
+    restart: always
+    ports:
+      - "3366:3366"
+    environment:
+      - PORT=3366
+      - NODE_ENV=production
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/uploads:/app/uploads
+
+  # 2. Web 商家管理后台
+  web-admin:
+    build:
+      context: ./web-admin
+      dockerfile: Dockerfile
+    container_name: wenju-web-admin
+    restart: always
+    ports:
+      - "8866:80"
+    depends_on:
+      - backend

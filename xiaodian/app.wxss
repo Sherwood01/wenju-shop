@@ -1,0 +1,34 @@
+/** 全局样式 - 现代文具百货风 **/
+page {
+  background-color: #f6f7fb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  color: #2c3e50;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, image, scroll-view, swiper {
+  box-sizing: border-box;
+}
+
+/* 优雅卡片 */
+.ui-card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.03);
+  margin-bottom: 24rpx;
+}
+
+/* 按钮微动效 */
+.btn-press:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

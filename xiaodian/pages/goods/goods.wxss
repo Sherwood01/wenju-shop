@@ -1,0 +1,184 @@
+.goods-shelf-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f7fb;
+  overflow: hidden;
+}
+
+/* 顶部搜索条 */
+.shelf-top-bar {
+  background: #ffffff;
+  padding: 16rpx 24rpx 14rpx;
+  border-bottom: 1rpx solid #f1f5f9;
+  flex-shrink: 0;
+}
+
+.search-fake-box {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 32rpx;
+  padding: 14rpx 24rpx;
+  gap: 12rpx;
+}
+
+.search-icon {
+  font-size: 26rpx;
+}
+
+.search-placeholder {
+  font-size: 24rpx;
+  color: #94a3b8;
+}
+
+.shelf-tips {
+  font-size: 20rpx;
+  color: #059669;
+  margin-top: 10rpx;
+  padding-left: 8rpx;
+}
+
+/* 主体货架区域 */
+.shelf-main-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 左侧品类侧边栏 */
+.sidebar-scroll {
+  width: 180rpx;
+  background: #f8fafc;
+  height: 100%;
+  flex-shrink: 0;
+  border-right: 1rpx solid #e2e8f0;
+}
+
+.sidebar-item {
+  position: relative;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.sidebar-item.active {
+  background: #ffffff;
+  color: #059669;
+  font-weight: 700;
+}
+
+.active-indicator {
+  position: absolute;
+  left: 0;
+  top: 25rpx;
+  bottom: 25rpx;
+  width: 8rpx;
+  border-radius: 0 4rpx 4rpx 0;
+  background: #10b981;
+}
+
+.cat-label {
+  text-align: center;
+  padding: 0 10rpx;
+}
+
+/* 右侧商品陈列区 */
+.shelf-content-scroll {
+  flex: 1;
+  height: 100%;
+  background: #ffffff;
+  padding: 20rpx;
+}
+
+.shelf-header-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 16rpx;
+  background: #ecfdf5;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag-bold {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #047857;
+}
+
+.tag-note {
+  font-size: 20rpx;
+  color: #10b981;
+}
+
+/* 商品卡片列表 */
+.shelf-products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  padding-bottom: 40rpx;
+}
+
+.shelf-product-card {
+  background: #ffffff;
+  border: 1rpx solid #f1f5f9;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.card-top-info {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 1rpx dashed #f1f5f9;
+}
+
+.top-tag {
+  font-size: 20rpx;
+  color: #ffffff;
+  background: #ef4444;
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  font-weight: 700;
+}
+
+.top-title {
+  font-size: 24rpx;
+  color: #334155;
+  font-weight: 600;
+}
+
+.store-product-wrapper {
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+/* 提示卡片 */
+.shelf-hint-card {
+  background: #f8fafc;
+  border: 1rpx dashed #cbd5e1;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-top: 20rpx;
+}
+
+.hint-head {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8rpx;
+}
+
+.hint-body {
+  font-size: 22rpx;
+  color: #64748b;
+  line-height: 32rpx;
+}

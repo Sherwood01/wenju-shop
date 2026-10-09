@@ -1,0 +1,62 @@
+<view class="goods-shelf-page">
+  <!-- 顶部轻量搜索/指引条 -->
+  <view class="shelf-top-bar">
+    <view class="search-fake-box">
+      <text class="search-icon">🔍</text>
+      <text class="search-placeholder">搜一搜文具、笔类、本册、收纳好物...</text>
+    </view>
+    <view class="shelf-tips">⚡ 点击商品卡片底部半屏直接拉出微信小店收银台</view>
+  </view>
+
+  <!-- 门店级双联货架主体 -->
+  <view class="shelf-main-body">
+    <!-- 左侧品类侧边栏 (Sidebar) -->
+    <scroll-view class="sidebar-scroll" scroll-y enable-flex>
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="id"
+        class="sidebar-item {{selectedCategoryId === item.id ? 'active' : ''}}"
+        bindtap="onSelectCategory"
+        data-id="{{item.id}}"
+      >
+        <view class="active-indicator" wx:if="{{selectedCategoryId === item.id}}"></view>
+        <text class="cat-label">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧商品陈列展示区 (Product Shelf) -->
+    <scroll-view class="shelf-content-scroll" scroll-y enable-flex>
+      <!-- 当前分类提示条 -->
+      <view class="shelf-header-tag">
+        <text class="tag-bold">微信小店官方货源</text>
+        <text class="tag-note">正品联保 · 官方物流</text>
+      </view>
+
+      <!-- 商品列表循环 -->
+      <view class="shelf-products-list">
+        <view 
+          class="shelf-product-card" 
+          wx:for="{{filteredProducts}}" 
+          wx:key="productId"
+        >
+          <!-- 标签栏 -->
+          <view class="card-top-info">
+            <text class="top-tag">{{item.tag}}</text>
+            <text class="top-title">{{item.title}}</text>
+          </view>
+          
+          <!-- 核心微信小店 store-product 组件 -->
+          <view class="store-product-wrapper">
+            <store-product appid="{{shopAppId}}" product-id="{{item.productId}}" />
+          </view>
+        </view>
+
+        <!-- 货架底部提示卡片 -->
+        <view class="shelf-hint-card">
+          <view class="hint-head">💡 店主上新指引</view>
+          <view class="hint-body">在您的微信小店后台发布更多文具后，直接把商品ID填进 <code>config.local.js</code> 中即可自动上架！</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

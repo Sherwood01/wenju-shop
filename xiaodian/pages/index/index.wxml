@@ -1,0 +1,126 @@
+<view class="home-page">
+  <!-- 1. 顶部店招与公告栏 -->
+  <view class="shop-header-wrapper">
+    <view class="shop-header">
+      <view class="shop-brand-row">
+        <view class="shop-avatar">📚</view>
+        <view class="shop-titles">
+          <view class="shop-name">{{shopName}}</view>
+          <view class="shop-cert">
+            <text class="cert-dot"></text>
+            <text class="cert-text">微信小店官方认证店铺</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 动态跑马灯公告 -->
+    <view class="notice-bar">
+      <text class="notice-icon">📢</text>
+      <text class="notice-text">{{shopNotice}}</text>
+    </view>
+  </view>
+
+  <!-- 2. 精选活动大屏海报轮播 (Swiper) -->
+  <view class="banner-section">
+    <swiper 
+      class="banner-swiper" 
+      circular 
+      autoplay 
+      interval="4000" 
+      duration="500" 
+      bindchange="onSwiperChange"
+    >
+      <swiper-item wx:for="{{bannerList}}" wx:key="id">
+        <view class="banner-card">
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+          <view class="banner-overlay">
+            <view class="banner-title">{{item.title}}</view>
+            <view class="banner-sub">{{item.sub}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <!-- 自定义圆点指示器 -->
+    <view class="swiper-dots">
+      <view 
+        wx:for="{{bannerList}}" 
+        wx:key="id" 
+        class="dot {{swiperCurrent === index ? 'active' : ''}}"
+      ></view>
+    </view>
+  </view>
+
+  <!-- 3. 五大品类金刚区导航 -->
+  <view class="category-nav-card ui-card">
+    <view class="nav-grid">
+      <view 
+        class="nav-item btn-press" 
+        wx:for="{{navCategories}}" 
+        wx:key="id"
+        bindtap="navigateToCategory"
+        data-id="{{item.id}}"
+      >
+        <view class="nav-icon-bg">{{item.icon}}</view>
+        <text class="nav-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 4. 模式切换栏 (精选爆款货架 vs 微信小店整店) -->
+  <view class="mode-tabs-wrapper">
+    <view 
+      class="mode-tab {{currentMode === 'showcase' ? 'active' : ''}}" 
+      bindtap="switchMode" 
+      data-mode="showcase"
+    >
+      <text class="tab-title">🔥 门店精选爆款</text>
+      <text class="tab-sub">半屏直购收银</text>
+    </view>
+    <view 
+      class="mode-tab {{currentMode === 'whole_store' ? 'active' : ''}}" 
+      bindtap="switchMode" 
+      data-mode="whole_store"
+    >
+      <text class="tab-title">🏬 微信小店全览</text>
+      <text class="tab-sub">官方整店嵌入</text>
+    </view>
+  </view>
+
+  <!-- 5. 视图 A: 门店精选爆款货架 (嵌入 store-product 半屏下单) -->
+  <view class="mode-content" wx:if="{{currentMode === 'showcase'}}">
+    <!-- 服务承诺背书 -->
+    <view class="service-promise-card">
+      <view class="p-item">⚡ 微信小店半屏秒级下单</view>
+      <view class="p-item">📦 顺丰/通达极速打单</view>
+      <view class="p-item">🛡️ 微信资金官方保障</view>
+    </view>
+
+    <!-- 镇店单品展台 -->
+    <view class="showcase-stream">
+      <view class="product-item-card ui-card" wx:for="{{featuredProducts}}" wx:key="productId">
+        <view class="product-badge-bar">
+          <view class="badge-tag">{{item.tag}}</view>
+          <view class="badge-desc">{{item.desc}}</view>
+        </view>
+
+        <!-- 嵌入微信官方原生 store-product 组件 -->
+        <view class="native-product-box">
+          <store-product appid="{{shopAppId}}" product-id="{{item.productId}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 6. 视图 B: 微信小店整店原生内嵌 (store-home) -->
+  <view class="mode-content" wx:if="{{currentMode === 'whole_store'}}">
+    <view class="store-home-container">
+      <store-home appid="{{shopAppId}}" />
+    </view>
+  </view>
+
+  <!-- 7. 页面底栏 -->
+  <view class="home-footer">
+    <view class="footer-line"></view>
+    <text class="footer-text">学伴文具 · 每一件文具都精挑细选</text>
+  </view>
+</view>

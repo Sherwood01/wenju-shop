@@ -1,0 +1,87 @@
+<view class="user-center-page">
+  <!-- 1. 会员与店铺身份头部卡片 -->
+  <view class="member-header-card">
+    <view class="member-avatar-box">
+      <open-data type="userAvatarUrl" class="avatar-img"></open-data>
+      <view class="avatar-fallback">👤</view>
+    </view>
+    <view class="member-meta">
+      <view class="member-name-row">
+        <open-data type="userNickName" class="member-nick"></open-data>
+        <text class="member-tag">文具优选会员</text>
+      </view>
+      <view class="shop-badge-info">
+        <text class="badge-icon">🛡️</text>
+        <text class="badge-text">{{shopName}} · 微信小店官方承保</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 2. 我的小店订单核心面板 -->
+  <view class="order-dashboard-card ui-card">
+    <view class="dash-title-row">
+      <text class="dash-main-title">📦 我的小店订单</text>
+      <view class="dash-all-link btn-press" bindtap="openStoreOrder">
+        <text>查看全部订单</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 订单快捷入口 -->
+    <view class="order-grid">
+      <view 
+        class="order-tab-btn btn-press" 
+        wx:for="{{orderTabs}}" 
+        wx:key="id"
+        bindtap="openStoreOrder"
+      >
+        <view class="tab-icon">{{item.icon}}</view>
+        <text class="tab-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 3. 便民服务与官方客服 -->
+  <view class="service-actions-card ui-card">
+    <view class="card-label">服务与支持</view>
+    <button class="action-row-btn btn-press" open-type="contact">
+      <view class="row-left">
+        <text class="row-icon">🎧</text>
+        <text class="row-title">联系在线小店客服</text>
+      </view>
+      <text class="row-arrow">›</text>
+    </button>
+    <button class="action-row-btn btn-press" open-type="feedback">
+      <view class="row-left">
+        <text class="row-icon">✍️</text>
+        <text class="row-title">意见与体验反馈</text>
+      </view>
+      <text class="row-arrow">›</text>
+    </button>
+  </view>
+
+  <!-- 4. 常见问题手风琴 FAQ -->
+  <view class="faq-card ui-card">
+    <view class="card-label">购物须知 & 售后规则</view>
+    <view 
+      class="faq-item" 
+      wx:for="{{faqList}}" 
+      wx:key="q"
+      bindtap="toggleFaq"
+      data-index="{{index}}"
+    >
+      <view class="faq-question">
+        <text class="q-title">{{item.q}}</text>
+        <text class="q-arrow {{openedFaqIndex === index ? 'open' : ''}}">▼</text>
+      </view>
+      <view class="faq-answer" wx:if="{{openedFaqIndex === index}}">
+        <text class="a-content">{{item.a}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 5. 底部服务背书 -->
+  <view class="footer-endorsement">
+    <text class="e-text">由 微信小店 & 微信小程序 提供安全交易保障</text>
+  </view>
+</view>
